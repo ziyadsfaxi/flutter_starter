@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starter/logger/logger.dart';
 import 'package:flutter_starter/src/locator.dart';
 import 'package:flutter_starter/src/router.gr.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupGlobalConfig();
   setupLocator();
   runApp(MyApp());
 }
@@ -22,5 +26,21 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );
+  }
+}
+
+Future<void> setupGlobalConfig() async {
+  try {
+    /**
+     * change this var to change the environment.
+     * exmp. development or production
+     */
+    final _env = 'example';
+
+    await GlobalConfiguration().loadFromPath('lib/src/config/$_env.config.json');
+    log('ENVIRONEMENT: $_env', 'info');
+  } catch (e) {
+    error(e);
+    throw e;
   }
 }
