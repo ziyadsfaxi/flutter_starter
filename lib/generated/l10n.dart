@@ -33,7 +33,15 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-
+  /// `Home Page`
+  String get homePage {
+    return Intl.message(
+      'Home Page',
+      name: 'homePage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

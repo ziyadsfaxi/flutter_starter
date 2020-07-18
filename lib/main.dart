@@ -27,6 +27,9 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
+      // change locale from here
+      // hint: use ValueListenableBuilder to change this value dynamically.
+      locale: Locale('en'),
       initialRoute: Routes.splashScreenView,
       onGenerateRoute: Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
