@@ -16,6 +16,7 @@ class HomeView extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: model.updateCounter,
+          child: Icon(Icons.add),
         ),
       ),
       viewModelBuilder: () => HomeViewModel(),
