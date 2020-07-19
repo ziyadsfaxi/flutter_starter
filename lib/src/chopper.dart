@@ -4,8 +4,8 @@ import 'package:flutter_starter/src/services/api/example_api.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class ApiService {
-  final chopper = new ChopperClient(
+class ApiService extends ChopperClient {
+  static final _chopper = new ChopperClient(
     baseUrl: 'www.example.com/api',
     services: [
       ExampleApiService.create(),
@@ -17,4 +17,8 @@ class ApiService {
     converter: BuiltValueConverter(),
     errorConverter: JsonConverter(),
   );
+
+  factory ApiService() {
+    return _chopper;
+  }
 }
