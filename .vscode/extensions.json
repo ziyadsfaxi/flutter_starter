@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "localizely.flutter-intl"
+        "localizely.flutter-intl",
+        "yongzhenlow.dart-built-value-snippets"
     ]
 }
