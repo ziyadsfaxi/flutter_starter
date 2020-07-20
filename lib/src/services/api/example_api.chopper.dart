@@ -17,10 +17,17 @@ class _$ExampleApiService extends ExampleApiService {
   final definitionType = ExampleApiService;
 
   @override
-  Future<Response<dynamic>> login(LoginRequestModel body, String id) {
-    final $url = 'login/$id';
+  Future<Response<dynamic>> login(ExampleModel body, String id) {
+    final $url = 'todos';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<BuiltList<ExampleModel>>> getTodos() {
+    final $url = 'todos';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<BuiltList<ExampleModel>, ExampleModel>($request);
   }
 }
