@@ -25,6 +25,12 @@ class BuiltValueConverter extends JsonConverter {
   }
 
   dynamic _convertToCustomObject<SingleItemType>(dynamic element) {
+    /**
+     * TODO: define your response structure here
+     * ex., if your response data comes in body.data, you'll have to override
+     * element to body.data 
+     */
+
     // If the type which the response should hold is explicitly set to a dynamic Map,
     // there's nothing we can convert.
     if (element is SingleItemType) return element;
