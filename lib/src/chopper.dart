@@ -1,7 +1,9 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter_starter/built_value/converter.dart';
+import 'package:flutter_starter/logger/logger.dart';
 import 'package:flutter_starter/src/services/api/example_api.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logging/logging.dart';
 
 @lazySingleton
 class ApiService {
@@ -18,8 +20,11 @@ class ApiService {
     errorConverter: JsonConverter(),
   );
 
-  factory ApiService() {
-    return _chopper;
+  ApiService() {
+    Logger.root.level = Level.ALL;
+    Logger.root.onRecord.listen((rec) {
+      log('${rec.level.name}: ${rec.time}: ${rec.message}', 'info');
+    });
   }
 
   ChopperClient get api => _api;
