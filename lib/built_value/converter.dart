@@ -25,16 +25,14 @@ class BuiltValueConverter extends JsonConverter {
   }
 
   dynamic _convertToCustomObject<SingleItemType>(dynamic element) {
-    final bodyData = element['data'];
-
     // If the type which the response should hold is explicitly set to a dynamic Map,
     // there's nothing we can convert.
-    if (bodyData is SingleItemType) return bodyData;
+    if (element is SingleItemType) return element;
 
-    if (bodyData is List)
-      return _deserializeListOf<SingleItemType>(bodyData);
+    if (element is List)
+      return _deserializeListOf<SingleItemType>(element);
     else
-      return _deserialize<SingleItemType>(bodyData);
+      return _deserialize<SingleItemType>(element);
   }
 
   BuiltList<SingleItemType> _deserializeListOf<SingleItemType>(List dynamicList) {
