@@ -17,11 +17,11 @@ class _$ExampleApiService extends ExampleApiService {
   final definitionType = ExampleApiService;
 
   @override
-  Future<Response<dynamic>> login(ExampleModel body, String id) {
+  Future<Response<ExampleModel>> createTodo(ExampleModel body) {
     final $url = 'todos';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
-    return client.send<dynamic, dynamic>($request);
+    return client.send<ExampleModel, ExampleModel>($request);
   }
 
   @override

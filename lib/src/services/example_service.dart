@@ -9,6 +9,12 @@ import 'package:injectable/injectable.dart';
 class ExampleService {
   BuiltList<ExampleModel> todos;
 
+  Future<ExampleModel> createTodo(ExampleModel todo) async {
+    final result = await locator<ApiService>().api.getService<ExampleApiService>().createTodo(todo);
+
+    return result.body;
+  }
+
   Future<BuiltList<ExampleModel>> getTodos() async {
     final result = await locator<ApiService>().api.getService<ExampleApiService>().getTodos();
 

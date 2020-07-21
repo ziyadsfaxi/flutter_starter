@@ -7,7 +7,7 @@ part 'example_api.chopper.dart';
 @ChopperApi(baseUrl: 'todos')
 abstract class ExampleApiService extends ChopperService {
   @Post()
-  Future<Response<dynamic>> login(@Body() ExampleModel body, @Path() String id);
+  Future<Response<ExampleModel>> createTodo(@Body() ExampleModel body);
 
   @Get()
   Future<Response<BuiltList<ExampleModel>>> getTodos();

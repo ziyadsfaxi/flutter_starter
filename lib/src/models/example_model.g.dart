@@ -21,12 +21,16 @@ class _$ExampleModelSerializer implements StructuredSerializer<ExampleModel> {
     final result = <Object>[
       'userId',
       serializers.serialize(object.userId, specifiedType: const FullType(int)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
       'completed',
       serializers.serialize(object.completed,
           specifiedType: const FullType(bool)),
     ];
+    if (object.id != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(object.id,
+            specifiedType: const FullType(int)));
+    }
     if (object.title != null) {
       result
         ..add('title')
@@ -87,9 +91,6 @@ class _$ExampleModel extends ExampleModel {
       : super._() {
     if (userId == null) {
       throw new BuiltValueNullFieldError('ExampleModel', 'userId');
-    }
-    if (id == null) {
-      throw new BuiltValueNullFieldError('ExampleModel', 'id');
     }
     if (completed == null) {
       throw new BuiltValueNullFieldError('ExampleModel', 'completed');

@@ -26,4 +26,12 @@ class HomeViewModel extends BaseViewModel {
     log(_todos.first);
     notifyListeners();
   }
+
+  void createTodo() async {
+    final todo = new ExampleModel((b) => b
+      ..userId = 1
+      ..title = 'New Todo'
+      ..completed = false);
+    await _exampleService.createTodo(todo);
+  }
 }

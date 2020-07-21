@@ -5,6 +5,7 @@ part 'example_model.g.dart';
 
 abstract class ExampleModel implements Built<ExampleModel, ExampleModelBuilder> {
   int get userId;
+  @nullable
   int get id;
   @nullable
   String get title;
